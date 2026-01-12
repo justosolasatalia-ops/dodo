@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>DODO | Tienda Online</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#0b0b0b;
+  color:white;
+}
+
+/* SPLASH */
+#splash{
+  position:fixed;
+  inset:0;
+  background:linear-gradient(135deg,#000,#111,#000);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  z-index:3000;
+}
+.logo{
+  width:120px;
+  height:120px;
+  border-radius:30px;
+  background:linear-gradient(135deg,#ffcc00,#ff0000);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:52px;
+  font-weight:bold;
+  color:black;
+}
+#splash h1{
+  letter-spacing:6px;
+  margin:15px 0 5px;
+}
+#splash a{
+  color:#ffcc00;
+  text-decoration:none;
+  margin:6px 0;
+}
+#splash button{
+  margin-top:25px;
+  padding:14px 32px;
+  border:none;
+  border-radius:30px;
+  background:#ffcc00;
+  color:black;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+/* HEADER */
+header{
+  position:fixed;
+  top:0;
+  width:100%;
+  height:60px;
+  background:linear-gradient(90deg,#ffcc00,#ff0000);
+  display:flex;
+  align-items:center;
+  padding:0 15px;
+  color:black;
+  z-index:2000;
+}
+.menu{
+  font-size:26px;
+  cursor:pointer;
+}
+.brand{
+  margin:auto;
+  font-weight:bold;
+  letter-spacing:4px;
+}
+
+/* INFO */
+.info{
+  margin-top:60px;
+  padding:10px;
+  text-align:center;
+  background:#111;
+  border-bottom:2px solid #ffcc00;
+  font-size:14px;
+}
+.info a{
+  color:#ffcc00;
+  text-decoration:none;
+  margin:0 6px;
+}
+
+/* SIDEBAR */
+.sidebar{
+  position:fixed;
+  top:60px;
+  left:-100%;
+  width:100%;
+  background:#111;
+  padding:20px;
+  transition:.3s;
+  z-index:1500;
+}
+.sidebar.activo{left:0}
+.sidebar a{
+  display:block;
+  padding:14px;
+  border-bottom:1px solid #333;
+  color:white;
+  text-decoration:none;
+}
+.sidebar a:hover{color:#ffcc00}
+
+/* CATEGORIAS */
+.categoria{
+  display:none;
+  padding:20px;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+}
+.categoria.activo{display:grid}
+
+/* PRODUCTO */
+.producto{
+  background:#151515;
+  border:1px solid #ffcc00;
+  border-radius:16px;
+  padding:15px;
+}
+.producto img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+  border-radius:12px;
+}
+.producto h3{
+  margin:10px 0 5px;
+}
+.detalle{
+  font-size:13px;
+  opacity:.85;
+}
+.precio{
+  color:#ffcc00;
+  font-weight:bold;
+  font-size:17px;
+}
+.producto a{
+  display:block;
+  text-align:center;
+  margin-top:10px;
+  padding:10px;
+  border-radius:25px;
+  background:linear-gradient(90deg,#ff0000,#ffcc00);
+  color:black;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+</style>
+
+<script>
+function entrar(){
+  document.getElementById("splash").style.display="none";
+}
+function menu(){
+  document.getElementById("sidebar").classList.toggle("activo");
+}
+function ver(id){
+  document.querySelectorAll(".categoria").forEach(c=>c.classList.remove("activo"));
+  document.getElementById(id).classList.add("activo");
+  document.getElementById("sidebar").classList.remove("activo");
+}
+</script>
+</head>
+
+<body>
+
+<!-- SPLASH -->
+<div id="splash">
+  <div class="logo">D</div>
+  <h1>DODO</h1>
+  <a href="https://wa.me/5493454942358">📱 WhatsApp</a>
+  <a href="https://instagram.com/dodo_stock">📸 Instagram</a>
+  <a href="#">📘 Facebook</a>
+  <button onclick="entrar()">Ingresar a la tienda</button>
+</div>
+
+<header>
+  <div class="menu" onclick="menu()">☰</div>
+  <div class="brand">DODO</div>
+</header>
+
+<div class="info">
+  📞 <a href="https://wa.me/5493454942358">+54 9 3454 94-2358</a> |
+  📸 <a href="https://instagram.com/dodo_stock">@dodo_stock</a> |
+  📘 <a href="#">Facebook</a>
+</div>
+
+<div class="sidebar" id="sidebar">
+  <a onclick="ver('perfumes')">Perfumes</a>
+  <a onclick="ver('electronica')">Electrónica</a>
+  <a onclick="ver('ropa')">Ropa</a>
+</div>
+
+<!-- PERFUMES -->
+<section id="perfumes" class="categoria">
+  <div class="producto"><img src="https://i.imgur.com/7QKJYwZ.jpg"><h3>Le Male Elixir 125ml</h3><p class="precio">$130</p><a href="https://wa.me/5493454942358">Comprar</a></div>
+  <div class="producto"><img src="https://i.imgur.com/MGZ9x4F.jpg"><h3>Le Male Le Parfum 125ml</h3><p class="precio">$130</p><a href="#">Comprar</a></div>
+  <div class="producto"><img src="https://i.imgur.com/Jz8xv7E.jpg"><h3>Valentino Born in Roma Intense</h3><p class="precio">$110</p><a href="#">Comprar</a></div>
+  <div class="producto"><img src="https://i.imgur.com/cx8rKQy.jpg"><h3>Khamrah 100ml</h3><p class="precio">$42</p><a href="#">Comprar</a></div>
+  <div class="producto"><img src="https://i.imgur.com/T1tM7nM.jpg"><h3>Odyssey Aqua</h3><p class="precio">$54</p><a href="#">Comprar</a></div>
+  <div class="producto"><img src="https://i.imgur.com/FnX7F7E.jpg"><h3>212 VIP 100ml</h3><p class="precio">$110</p><a href="#">Comprar</a></div>
+  <div class="producto"><img src="https://i.imgur.com/9c9rN0A.jpg"><h3>Lattafa Asad 100ml</h3><p class="precio">$42</p><a href="#">Comprar</a></div>
+  <div class="producto"><img src="https://i.imgur.com/Wq9xjFv.jpg"><h3>Sauvage EDT 100ml</h3><p class="precio">$110</p><a href="#">Comprar</a></div>
+</section>
+
+<!-- ELECTRONICA -->
+<section id="electronica" class="categoria">
+  <div class="producto"><img src="https://i.imgur.com/4z3xZ7E.jpg"><h3>AirPods Pro</h3><p class="detalle">Cancelación de ruido · Estuche inalámbrico</p><p class="precio">$180</p><a href="#">Comprar</a></div>
+  <div class="producto"><img src="https://i.imgur.com/Yk6nM0M.jpg"><h3>AirPods 2da Gen</h3><p class="detalle">Bluetooth · Micrófono integrado</p><p class="precio">$140</p><a href="#">Comprar</a></div>
+  <div class="producto"><img src="https://i.imgur.com/6Z0mZgA.jpg"><h3>iPhone</h3><p class="detalle">Cámara HD · iOS</p><p class="precio">$750</p><a href="#">Comprar</a></div>
+  <div class="producto"><img src="https://i.imgur.com/1LJ8wMl.jpg"><h3>Samsung Galaxy</h3><p class="detalle">Pantalla AMOLED · Android</p><p class="precio">$620</p><a href="#">Comprar</a></div>
+</section>
+
+<!-- ROPA -->
+<section id="ropa" class="categoria">
+  <div class="producto">
+    <img src="https://i.imgur.com/2b7QK6A.jpg">
+    <h3>Zapatillas Urbanas</h3>
+    <p class="detalle">Uso diario · Estilo street · Talles 38 al 44</p>
+    <p class="precio">$95</p>
+    <a href="#">Comprar</a>
+  </div>
+
+  <div class="producto">
+    <img src="https://i.imgur.com/YJZ7f3g.jpg">
+    <h3>Zapatillas Deportivas</h3>
+    <p class="detalle">Running · Suela antideslizante · Livianas</p>
+    <p class="precio">$110</p>
+    <a href="#">Comprar</a>
+  </div>
+
+  <div class="producto">
+    <img src="https://i.imgur.com/0g1Cw5A.jpg">
+    <h3>Zapatillas Premium</h3>
+    <p class="detalle">Diseño exclusivo · Máxima comodidad</p>
+    <p class="precio">$140</p>
+    <a href="#">Comprar</a>
+  </div>
+</section>
+
+</body>
+</html>
